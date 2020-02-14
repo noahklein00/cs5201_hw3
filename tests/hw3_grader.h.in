@@ -1,0 +1,8 @@
+#include "VEC_NAME.h"
+#include <vector>
+using std::vector;
+
+template <typename T>
+struct VectorWrap {
+  typedef VEC_NAME<T> type;
+};

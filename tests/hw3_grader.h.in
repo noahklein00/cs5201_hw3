@@ -1,8 +1,8 @@
-#include "VEC_NAME.h"
+#include "Iter.h"
 #include <vector>
 using std::vector;
 
 template <typename T>
 struct VectorWrap {
-  typedef VEC_NAME<T> type;
+  typedef MyVector<T> type;
 };

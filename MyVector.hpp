@@ -4,8 +4,6 @@
 // Assignment : Homework 3 - Euler's Method for ODEs and SIR(D) Model
 // Filename   : MyVector.hpp
 
-#include "MyVector.h"
-
 using namespace std;
 
 //
@@ -15,16 +13,14 @@ using namespace std;
 template <typename T>
 MyVector<T>::MyVector()
 {
-	//cout << "default constructor" << endl;
 	m_arr = new T[10]; //default size of 10
 	m_size = 0;
-	m_available = 10;
+	m_available = 10; 
 }
 
 template <typename T>
 MyVector<T>::MyVector(const int size)
 {
-	//cout << "size constructor" << endl;
 	m_arr = new T[size];
 	m_size = 0;
 	m_available = size;
@@ -33,8 +29,7 @@ MyVector<T>::MyVector(const int size)
 template <typename T>
 MyVector<T>::MyVector(const std::initializer_list<T> & list)
 {
-	//cout << "list constructor" << endl;
-	m_available = list.size();
+	m_available = list.size(); 
 	m_size = 0;
 	m_arr = new T[m_available];
 	for(auto itr = list.begin(); itr != list.end(); itr++)
@@ -44,7 +39,6 @@ MyVector<T>::MyVector(const std::initializer_list<T> & list)
 template <typename T>
 MyVector<T>::MyVector(const MyVector<T> & cpy_vec)
 {
-	//cout << "copy constructor" << endl;
 	m_available = cpy_vec.m_available;
 	m_size = 0;
 	m_arr = new T[m_available];
@@ -66,7 +60,6 @@ MyVector<T>& MyVector<T>::operator=(const MyVector<T> & cpy_vec)
 template <typename T>
 MyVector<T>::~MyVector()
 {
-	//cout << "destructor" << endl;
 	delete[] m_arr;
 }
 
@@ -245,12 +238,21 @@ MyVector<T> MyVector<T>::operator-()
 	return copy;
 }
 
+template <typename T>
+MyVector<T> MyVector<T>::apply(T func (T)) const
+{
+	MyVector<T> new_vec;
+	for(int i = 0; i < m_size; i++)
+		new_vec.push_back(func(m_arr[i]));
+	return new_vec;
+}
+	
 //
 //----------------- Accessor ------------------//
 //
 
 template <typename T>
-T MyVector<T>::get(const int index)
+T& MyVector<T>::get(const int index)
 {
 	if(index >= m_size)// throw an error
 	{
@@ -287,3 +289,30 @@ std::ostream & operator << (ostream & out, MyVector<T> & rhs)
 		//out << rhs.m_arr[t] << " ";
 	return out;
 }
+
+template <typename T>
+std::istream & operator >> (istream & in, MyVector<T>& rhs)
+{
+	istream_iterator<T> in_it(in);
+	istream_iterator<T> eos;
+	
+	rhs.clear();
+	
+	for(;in_it != eos; ++in_it)
+		rhs.push_back(*in_it);
+	return in;
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

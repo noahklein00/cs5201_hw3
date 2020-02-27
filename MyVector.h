@@ -8,6 +8,8 @@
 #define MYVECTOR_H
 
 #include <iostream>
+#include <iterator>
+#include <functional>
 
 using namespace std;
 
@@ -38,10 +40,10 @@ class MyVector
 		MyVector<T> operator-(const MyVector & rhs);
 		MyVector<T> operator*(const T & rhs);
 		MyVector<T> operator-();
-		MyVector<T>& operator()(auto 
+		MyVector<T> apply(T func (T)) const;
 		
 		// Accessors //
-		T get(const int index);
+		T& get(const int index);
 		int size() const;
 		const T& operator[](const int index) const;
 		T operator*(const MyVector<T> & rhs) const;
@@ -50,6 +52,9 @@ class MyVector
 		// Friend //
 		template <typename U>
 		friend ostream& operator << (ostream& out, const MyVector<U>& rhs);
+		
+		template <typename U>
+		friend istream& operator >> (istream & in, const MyVector<U>& rhs);
 		
 	class iterator
     {
@@ -121,6 +126,9 @@ class MyVector
 
 template <typename T>
 std::ostream & operator << (ostream & out, const MyVector<T> & rhs);
+
+template <typename T>
+std::istream & operator >> (istream & in, MyVector<T>& rhs);
 
 #include "MyVector.hpp"
 #endif

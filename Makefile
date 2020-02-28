@@ -38,7 +38,7 @@ clean:
 # Dependency lists for the various source files
 driver.o: driver.cpp\
           SIRD.h\
-          SIRD.hpp\
+          SIRD.cpp\
           MyVector.h\
           MyVector.hpp\
           Euler.h\

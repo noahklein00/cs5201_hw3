@@ -5,15 +5,17 @@
 // Filename   : driver.cpp
 
 #include "SIRD.h"
+#include <cstdlib>
 
 using namespace std;
+using std::strtod;
 
-int main()
+int main(int argc, char* argv[])
 {
 	try
 	{
-		double i_pop;
-		double i_infect;
+		double i_pop = strtod(argv[1], nullptr);
+		double i_infect = strtod(argv[2],nullptr);
 		
 		//constants
 		const int days = 30;
@@ -21,9 +23,6 @@ int main()
 		const double beta = .01;
 		const double nu = .1;
 		const double delta = .05;
-
-		cin >> i_pop;
-		cin >> i_infect;
 		
 		SIRD_model simulation(i_pop, i_infect, time_step, 
 			MyVector<double>({beta, nu, delta}));

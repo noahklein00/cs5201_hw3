@@ -4,6 +4,8 @@
 // Assignment : Homework 3 - Euler's Method for ODEs and SIR(D) Model
 // Filename   : SIRD.cpp
 
+#include "SIRD.h"
+
 using namespace std;
 
 SIRD_model::SIRD_model(const double t_pop,const double i_inf, 

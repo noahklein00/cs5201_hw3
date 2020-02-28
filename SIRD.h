@@ -130,7 +130,4 @@ class SIRD_model
  */
 std::ostream & operator << (ostream & out, const SIRD_model & rhs);
 
-
-
-#include "SIRD.cpp"
 #endif

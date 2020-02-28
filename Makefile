@@ -16,7 +16,8 @@
 
 CXX = /usr/bin/g++
 FLAGS = -W -Wall -g -pedantic-errors
-OBJECTS = driver.o
+OBJECTS = driver.o\
+          SIRD.o
 
 .SUFFIXES: .cpp
 
@@ -44,3 +45,11 @@ driver.o: driver.cpp\
           Euler.h\
           Euler.hpp
 	g++ -c driver.cpp
+	
+SIRD.o: SIRD.cpp\
+        SIRD.h\
+        MyVector.h\
+        MyVector.hpp\
+        Euler.h\
+        Euler.hpp
+	g++ -c SIRD.cpp

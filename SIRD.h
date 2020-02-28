@@ -132,5 +132,5 @@ std::ostream & operator << (ostream & out, const SIRD_model & rhs);
 
 
 
-#include "SIRD.hpp"
+#include "SIRD.cpp"
 #endif

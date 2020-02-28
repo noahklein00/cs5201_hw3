@@ -161,7 +161,7 @@ T& MyVector<T>::operator[](const int index)
 }
 
 template <typename T>
-MyVector<T> MyVector<T>::operator+(const MyVector & rhs)
+MyVector<T> MyVector<T>::operator+(const MyVector<T> & rhs)
 {
 	MyVector<T> copy;
 	if(m_size >= rhs.m_size)
@@ -180,7 +180,7 @@ MyVector<T> MyVector<T>::operator+(const MyVector & rhs)
 }	
 
 template <typename T>
-MyVector<T> MyVector<T>::operator-(const MyVector & rhs)
+MyVector<T> MyVector<T>::operator-(const MyVector<T> & rhs)
 {
 	MyVector<T> copy;
 	if(m_size >= rhs.m_size)

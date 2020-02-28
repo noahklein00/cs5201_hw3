@@ -165,7 +165,7 @@ class MyVector
 		 * \pre += operator needs to be defined for type T.
 		 * \post Creates a new vector that gets returned. 
 		 */
-		MyVector<T> operator+(const MyVector & add_vec);
+		MyVector<T> operator+(const MyVector<T> & add_vec);
 		
 		/*! \brief - operator (binary)
 		 *
@@ -179,7 +179,7 @@ class MyVector
 		 * \pre -= operator needs to be defined for type T.
 		 * \post Creates a new vector that gets returned. 
 		 */
-		MyVector<T> operator-(const MyVector & rhs);
+		MyVector<T> operator-(const MyVector<T> & rhs);
 		
 		/*! \brief Scalar multiplication
 		 *

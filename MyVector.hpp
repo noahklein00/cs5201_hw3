@@ -90,6 +90,7 @@ template <typename T>
 void MyVector<T>::resize(const int new_size)
 {
 	T* temp_arr;
+	if(new_size < 0) throw(std::domain_error(to_string(new_size)));
 	if(new_size > m_available)
 	{
 		temp_arr = new T[new_size];
@@ -116,6 +117,7 @@ template <typename T>
 void MyVector<T>::resize(const int new_size, const T& filler)
 {
 	T* temp_arr;
+	if(new_size < 0) throw(std::domain_error(to_string(new_size)));
 	if(new_size > m_available)
 	{
 		temp_arr = new T[new_size];
@@ -153,10 +155,8 @@ void MyVector<T>::clear()
 template <typename T>
 T& MyVector<T>::operator[](const int index)
 {
-	if(index < 0 || index >= m_size)//throw
-	{
-		cout << "throw" << endl;
-	}	
+	if(index < 0 || index >= m_size) 
+		throw(std::domain_error(to_string(index)));
 	return m_arr[index];
 }
 
@@ -213,23 +213,6 @@ MyVector<T> MyVector<T>::operator*(const T & rhs)
 }
 
 template <typename T>
-T MyVector<T>::operator*(const MyVector<T> & rhs) const
-{
-	T magnitude = 0;
-	if(m_size <= rhs.m_size)
-	{
-		for(int i = 0; i < m_size; i++)
-			magnitude += (m_arr[i] * rhs.m_arr[i]);
-	}
-	else
-	{
-		for(int i = 0; i < rhs.m_size; i++)
-			magnitude += (m_arr[i] * rhs.m_arr[i]);
-	}
-	return magnitude;
-}
-
-template <typename T>
 MyVector<T> MyVector<T>::operator-()
 {
 	MyVector<T> copy(*this);
@@ -254,10 +237,8 @@ MyVector<T> MyVector<T>::apply(T func (T)) const
 template <typename T>
 T& MyVector<T>::get(const int index)
 {
-	if(index >= m_size)// throw an error
-	{
-		cout << "index out of range" << endl;
-	}
+	if(index >= m_size || index < 0) 
+		throw(std::domain_error(to_string(index)));
 	return m_arr[index];
 }
 
@@ -270,11 +251,26 @@ int MyVector<T>::size() const
 template <typename T>
 const T& MyVector<T>::operator[](const int index) const
 {
-	if(index < 0 || index >= m_size) //throw
-	{
-		cout << "throw" << endl;
-	}		
+	if(index < 0 || index >= m_size)
+		throw(std::domain_error(to_string(index)));
 	return m_arr[index];
+}
+
+template <typename T>
+T MyVector<T>::operator*(const MyVector<T> & rhs) const
+{
+	T magnitude = 0;
+	if(m_size <= rhs.m_size)
+	{
+		for(int i = 0; i < m_size; i++)
+			magnitude += (m_arr[i] * rhs.m_arr[i]);
+	}
+	else
+	{
+		for(int i = 0; i < rhs.m_size; i++)
+			magnitude += (m_arr[i] * rhs.m_arr[i]);
+	}
+	return magnitude;
 }
 
 //
@@ -286,7 +282,6 @@ std::ostream & operator << (ostream & out, MyVector<T> & rhs)
 {	
 	for(auto t: rhs)
 		out << t << " ";
-		//out << rhs.m_arr[t] << " ";
 	return out;
 }
 

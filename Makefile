@@ -11,7 +11,7 @@
 ###############################################################################
 
 ###############################################################################
-## This makefile will build an executable for the 2020-sp-a-hw3-nekgr8 directory.
+#This makefile will build an executable for the 2020-sp-a-hw3-nekgr8 directory.
 ###############################################################################
 
 CXX = /usr/bin/g++
